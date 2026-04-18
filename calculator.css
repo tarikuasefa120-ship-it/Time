@@ -1,0 +1,175 @@
+:root {
+  /* Light and dark mode color variables */
+  --bg-color-light: black;              /* Light mode background color of body (unusual, but set here) */
+  --bg-color-dark: whitesmoke;          /* Dark mode background color of body */
+  --calc-bg-light: #ffffff;              /* Calculator background color in light mode */
+  --calc-bg-dark: #333333;               /* Calculator background color in dark mode */
+  --btn-bg-light: #e0e0e0;               /* Button background color in light mode */
+  --btn-bg-dark: #000000;                /* Button background color in dark mode */
+  --btn-text-light: #000000;             /* Button text color in light mode */
+  --btn-text-dark: #f1f1f1;              /* Button text color in dark mode */
+  --display-bg-light: #e8f5e9;           /* Display input background in light mode */
+  --display-bg-dark: #1b5e20;            /* Display input background in dark mode */
+  --display-text-light: #1b5e20;         /* Display input text color in light mode */
+  --display-text-dark: #ffffff;          /* Display input text color in dark mode */
+  --special-btn-bg: dimgray;             /* Background color for special buttons (mode, theme toggle) */
+  --highlight-color: #add8e6;            /* Highlight color used on hover */
+  --c-equal-light: slategray;            /* Background for number (class c) and equal buttons in light mode */
+  --c-equal-dark: dimgray;                /* Background for number (class c) buttons in dark mode */
+  --o-bg-light: lightskyblue;            /* Background for operator buttons in light mode */
+}
+
+body {
+  background: var(--bg-color-light);     /* Body background color from CSS variable */
+  display: flex;                         /* Use flexbox to center calculator */
+  justify-content: center;               /* Center horizontally */
+  align-items: center;                   /* Center vertically */
+  height: 100vh;                        /* Full viewport height */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font stack */
+  margin: 0;                            /* Remove default margin */
+  transition: background 0.3s ease;    /* Smooth transition when background changes (dark/light) */
+}
+
+body.dark {
+  background: var(--bg-color-dark);     /* Dark mode background color */
+}
+
+.calculator {
+  background: var(--calc-bg-light);      /* Calculator container background color in light mode */
+  border-radius: 16px;                   /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
+  max-width: 520px;                      /* Max width of calculator */
+  width: 100%;                          /* Full width within container */
+  padding: 60px 32px 40px;              /* Padding inside calculator */
+  box-sizing: border-box;               /* Includes padding and border in width */
+  transition: background 0.3s ease;     /* Smooth background transition */
+}
+
+body.dark .calculator {
+  background: var(--calc-bg-dark);       /* Calculator background in dark mode */
+}
+
+#display {
+  width: 100%;                          /* Full width of calculator */
+  min-height: 150px;
+  padding: 16px 20px;                   /* Padding inside display */
+  font-size: 45px;                      /* Large text size for display */
+  border: none;                        /* Remove default input border */
+  border-radius: 12px;                 /* Rounded corners */
+  text-align: left;                    /* Left align text */
+  margin-bottom: 22px;                 /* Space below display */
+  box-sizing: border-box;              /* Include padding/border in width */
+  font-weight: 900;                    /* Semi-bold text */
+  outline: none;                      /* Remove default focus outline */
+  background: var(--display-bg-dark); /* Display background light mode */
+  color: var(--display-text-dark);    /* Display text color light mode */
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for colors */
+}
+
+body.dark #display {
+  background: var(--display-bg-light);  /* Display background dark mode */
+  color: var(--display-text-light);     /* Display text color dark mode */
+}
+
+.buttons-top, .buttons-bottom {
+  display: grid;                       /* Use CSS grid layout for buttons */
+  gap: 14px;                          /* Space between buttons */
+}
+
+.buttons-top {
+  grid-template-columns: repeat(6, 1fr); /* 6 columns in top buttons grid */
+  margin-bottom: 20px;                /* Space below top buttons */
+}
+
+.buttons-bottom {
+  grid-template-columns: repeat(5, 1fr); /* 5 columns in bottom buttons grid */
+}
+
+button {
+  padding: 18px 0;                    /* Vertical padding */
+  font-size: 20px;                   /* Font size for buttons */
+  font-weight: 700;                  /* Bold text */
+  border: none;                     /* Remove default border */
+  border-radius: 12px;              /* Rounded corners */
+  background: var(--btn-bg-light);  /* Button background color (light mode) */
+  color: var(--btn-text-light);     /* Button text color (light mode) */
+  cursor: pointer;                  /* Pointer cursor on hover */
+  transition: background-color 0.2s ease, transform 0.1s ease, color 0.2s ease; /* Smooth hover and click effects */
+  user-select: none;                /* Disable text selection on buttons */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for 3D effect */
+  width: 100%;                     /* Full width inside grid cell */
+  box-sizing: border-box;          /* Include padding/border in width */
+}
+
+body.dark button {
+  background: var(--btn-bg-dark);   /* Button background color in dark mode */
+  color: var(--btn-text-dark);      /* Button text color in dark mode */
+}
+
+button:hover {
+  background: var(--highlight-color) !important; /* Highlight color on hover */
+  color: black !important;                        /* Black text on hover */
+}
+
+button:active, button.active {
+  transform: scale(0.95);          /* Slightly shrink button on click */
+}
+
+button.a {
+  background: #d42b2b;             /* Background color for "a" class buttons (like Clear and DEL) */
+  color: white;                    /* White text */
+}
+
+body.dark button.a {
+  background: crimson;             /* Dark mode color for "a" buttons */
+  color: white;                    /* White text */
+}
+
+button.c,
+button.equal {
+  background: var(--c-equal-light); /* Background for number buttons and equal in light mode */
+  color: black;                    /* Black text */
+}
+
+button.o {
+  background: lightskyblue;        /* Background for operator buttons in light mode */
+  color: black;                   /* Black text */
+}
+
+body.dark button.o,
+body.dark button.equal {
+  background: tomato;             /* Redish background for operators and equal in dark mode */
+  color: white;                  /* White text */
+}
+
+body.dark button.c {
+  background: var(--c-equal-dark); /* Number buttons background in dark mode */
+  color: white;                   /* White text */
+}
+
+button.mode-toggle, button.theme-toggle {
+  background: var(--special-btn-bg); /* Background for mode and theme toggle buttons */
+  color: #ffffff;                    /* White text */
+  font-size: 20px;                   /* Font size */
+  font-weight: 700;                  /* Bold text */
+  border: none;                     /* No border */
+  border-radius: 12px;              /* Rounded corners */
+  cursor: pointer;                  /* Pointer cursor */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: background-color 0.25s ease, transform 0.1s ease; /* Smooth transitions */
+  user-select: none;                /* Disable text selection */
+  width: 100%;                     /* Full width */
+  padding: 18px 0;                 /* Vertical padding */
+}
+
+button.theme-toggle {
+  font-size: 24px;                 /* Slightly larger font size for theme toggle */
+  padding: 0;                     /* No vertical padding */
+  line-height: 56px;              /* Line height for vertical centering */
+}
+
+button.mode-toggle:active,
+button.theme-toggle:active {
+  background: #616161;             /* Darker background on active/click */
+  transform: scale(0.95);         /* Slightly shrink button on click */
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html> <!-- Declares the document type and version as HTML5 -->
+<html lang="en"> <!-- Opens the HTML document with language set to English -->
+<head>
+  <meta charset="UTF-8" /> <!-- Sets character encoding to UTF-8 for broader character support -->
+  <title>Advanced Trig Calculator</title> <!-- Title shown on browser tab -->
+  <link rel="stylesheet" href="calculator.css"> <!-- Links to external CSS file for styling -->
+</head>
+<body>
+  <!-- Main calculator container -->
+  <div class="calculator">
+    <!-- Input display for showing typed or calculated expressions -->
+    <input type="text" id="display" />
+
+    <!-- Top button section for advanced functions -->
+    <div class="buttons-top">
+      <button onclick="memoryAdd()">M+</button> <!-- Adds current display value to memory -->
+      <button onclick="memorySubtract()">M-</button> <!-- Subtracts current display value from memory -->
+      <button onclick="memoryRecall()">MRC</button> <!-- Recalls the stored memory value -->
+      <button onclick="insertRoot()">ⁿ√x</button> <!-- Inserts nth root syntax -->
+      <button onclick="appendSymbol('^')">xⁿ</button> <!-- Appends exponent operator -->
+      <button onclick="append('^2')">x²</button> <!-- Appends square operation -->
+      <button onclick="insertAtCursor('p(,)', 3)">nPr</button> <!-- Inserts permutation syntax -->
+      <button onclick="insertAtCursor('c(,)', 3)">nCr</button> <!-- Inserts combination syntax -->
+      <button onclick="appendSymbol('ln(')">ln</button> <!-- Appends natural log function -->
+      <button onclick="insertAtCursor('e^(')">eˣ</button> <!-- Appends exponential function -->
+      <button onclick="appendSymbol('%')">%</button> <!-- Appends percent symbol -->
+      <button onclick="append('!')">x!</button> <!-- Appends factorial symbol -->
+      <button onclick="appendTrig('sin')">sin</button> <!-- Appends sin function with parentheses -->
+      <button onclick="appendTrig('cos')">cos</button> <!-- Appends cos function with parentheses -->
+      <button onclick="appendTrig('tan')">tan</button> <!-- Appends tan function with parentheses -->
+      <button onclick="appendSymbol('log(')">log</button> <!-- Appends base-10 log function -->
+      <button onclick="appendSymbol('√(')">√</button> <!-- Appends square root function -->
+      <button onclick="appendTrig('asin')">sin⁻¹</button> <!-- Appends inverse sine function -->
+      <button onclick="appendTrig('acos')">cos⁻¹</button> <!-- Appends inverse cosine function -->
+      <button onclick="appendTrig('atan')">tan⁻¹</button> <!-- Appends inverse tangent function -->
+      <button onclick="appendSymbol('π')">π</button> <!-- Appends pi constant -->
+      <button onclick="appendSymbol('e')">e</button> <!-- Appends Euler’s number constant -->
+      <button onclick="append('(')">(</button> <!-- Appends left parenthesis -->
+      <button onclick="append(')')">)</button> <!-- Appends right parenthesis -->
+    </div>
+
+    <!-- Bottom button section for numbers and basic operations -->
+    <div class="buttons-bottom">
+      <button class="c" onclick="append('7')">7</button> <!-- Appends number 7 -->
+      <button class="c" onclick="append('8')">8</button> <!-- Appends number 8 -->
+      <button class="c" onclick="append('9')">9</button> <!-- Appends number 9 -->
+      <button class="a" onclick="clearDisplay()">C</button> <!-- Clears the entire display -->
+      <button class="a" onclick="backspace()">DEL</button> <!-- Deletes the last character -->
+      <button class="c" onclick="append('4')">4</button> <!-- Appends number 4 -->
+      <button class="c" onclick="append('5')">5</button> <!-- Appends number 5 -->
+      <button class="c" onclick="append('6')">6</button> <!-- Appends number 6 -->
+      <button class="o" onclick="appendSymbol('*')">×</button> <!-- Appends multiplication operator -->
+      <button class="o" onclick="appendSymbol('÷')">÷</button> <!-- Appends division symbol -->
+      <button class="c" onclick="append('1')">1</button> <!-- Appends number 1 -->
+      <button class="c" onclick="append('2')">2</button> <!-- Appends number 2 -->
+      <button class="c" onclick="append('3')">3</button> <!-- Appends number 3 -->
+      <button class="o" onclick="appendSymbol('+')">+</button> <!-- Appends addition operator -->
+      <button class="o" onclick="appendSymbol('-')">−</button> <!-- Appends subtraction operator -->
+      <button class="c" onclick="append('0')">0</button> <!-- Appends number 0 -->
+      <button class="c" onclick="append('.')">.</button> <!-- Appends decimal point -->
+      <button class="equal" onclick="calculate()">=</button> <!-- Triggers calculation of expression -->
+      <button class="mode-toggle" id="modeButton" onclick="toggleMode()">Deg</button> <!-- Toggles between Degrees and Radians -->
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button> <!-- Toggles between light and dark theme -->
+    </div>
+  </div>
+
+  <!-- JavaScript file that controls the calculator's logic -->
+  <script src="calculator.js"></script>
+</body>
+</html>
